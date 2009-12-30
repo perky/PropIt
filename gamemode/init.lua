@@ -41,6 +41,16 @@ function addProp( model )
 end
 
 function GM:CanStartRound(iNum)
+	if #player.GetAll() >= 2 then
+		return true
+	else
+		return false
+	end
+end
+
+function GM:OnPreRoundStart( round_number )
+	self.BaseClass:OnPreRoundStart( round_number )
+	
 	chosenNoun  = table.Random( Nouns )
 	
 	if(WinningPlayer) then
@@ -73,8 +83,6 @@ function GM:CanStartRound(iNum)
 	WinningPlayer = nil
 	PropCount = 0
 	RoundIsWon = false
-	
-	return true
 end
 
 function GM:OnRoundStart(iNum)
