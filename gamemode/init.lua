@@ -61,8 +61,11 @@ function GM:OnPreRoundStart( round_number )
 	
 	for k,v in pairs(player.GetAll()) do
 		v:SetTeam( TEAM_GUESSERS )
+		v:SetPlayerClass( "guesser" )
+		v:Spawn()
 	end
 	chosenPlayer:SetTeam( TEAM_PROPPER )
+	v:SetPlayerClass( "propper" )
 	
 	local rp = RecipientFilter()
 	rp:AddPlayer( chosenPlayer )
