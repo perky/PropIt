@@ -24,7 +24,7 @@ hook.Add( "Initialize", "PropIt_init2", Init )
 
 function GM:PlayerInitialSpawn( pl )
 		pl:SetTeam( TEAM_GUESSERS )
-        pl:SetPlayerClass( "Spectator" )
+        pl:SetPlayerClass( "guesser" )
         pl.m_bFirstSpawn = true
         pl:UpdateNameColor()
        
@@ -63,9 +63,10 @@ function GM:OnPreRoundStart( round_number )
 		v:SetTeam( TEAM_GUESSERS )
 		v:SetPlayerClass( "guesser" )
 		v:Spawn()
+		v:StripWeapons()
 	end
 	chosenPlayer:SetTeam( TEAM_PROPPER )
-	v:SetPlayerClass( "propper" )
+	chosenPlayer:SetPlayerClass( "propper" )
 	
 	local rp = RecipientFilter()
 	rp:AddPlayer( chosenPlayer )

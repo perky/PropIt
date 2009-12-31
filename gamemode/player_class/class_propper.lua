@@ -8,6 +8,7 @@ CLASS.RunSpeed				= 500
 CLASS.DuckSpeed				= 0.4
 CLASS.JumpPower				= 300
 CLASS.DrawTeamRing			= true
+CLASS.PlayerModel			= "models/player/Kleiner.mdl"
 
 function CLASS:Loadout( pl )
 
