@@ -49,8 +49,6 @@ function GM:CanStartRound(iNum)
 end
 
 function GM:OnPreRoundStart( round_number )
-	self.BaseClass:OnPreRoundStart( round_number )
-	
 	chosenNoun  = table.Random( Nouns )
 	
 	if(WinningPlayer) then
@@ -62,8 +60,6 @@ function GM:OnPreRoundStart( round_number )
 	for k,v in pairs(player.GetAll()) do
 		v:SetTeam( TEAM_GUESSERS )
 		v:SetPlayerClass( "guesser" )
-		v:Spawn()
-		v:StripWeapons()
 	end
 	chosenPlayer:SetTeam( TEAM_PROPPER )
 	chosenPlayer:SetPlayerClass( "propper" )
@@ -87,6 +83,8 @@ function GM:OnPreRoundStart( round_number )
 	WinningPlayer = nil
 	PropCount = 0
 	RoundIsWon = false
+	
+	self.BaseClass:OnPreRoundStart( round_number )
 end
 
 function GM:OnRoundStart(iNum)
