@@ -27,12 +27,14 @@ function GM:PlayerInitialSpawn( pl )
         pl:SetPlayerClass( "guesser" )
         pl.m_bFirstSpawn = true
         pl:UpdateNameColor()
-       
+        pl:StripWeapons()
         GAMEMODE:CheckPlayerReconnected( pl )
 end
 
 function PlayerDisconnected( ply )
-	GAMEMODE:RoundEndWithResult( -1, "Prop maker disconnected, pfft drop-out.")
+	if ply == chosenPlay then
+		GAMEMODE:RoundEndWithResult( -1, "Prop maker disconnected, pfft drop-out.")
+	end
 end
 hook.Add("PlayerDisconnected", "PropIt_PlayerDisconnected", PlayerDisconnected)
 
